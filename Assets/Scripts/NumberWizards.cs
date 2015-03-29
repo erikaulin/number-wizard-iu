@@ -7,8 +7,8 @@ public class NumberWizards : MonoBehaviour {
 	public Text guessText;
 
 	// Use this for initialization
-	int max;
-	int min;
+	int max = 1000;
+	int min = 1;
 	int guess;
 	
 	void Start () {
@@ -16,33 +16,8 @@ public class NumberWizards : MonoBehaviour {
 	}
 	
 	void StartGame () {
-		max = 1000;
-		min = 1;
-		guess = 500;
-		
 		max = max +1;
-		guessText.text = guess.ToString();
-		
-		print ("========================");
-		print ("Welcome to Number Wizard");
-		print ("Pick number in your head, but don't tell me");
-		
-		print ("The highest number you can pick is " + max);
-		print ("The lowest number you can pick is " + min);
-		
-		print ("Is the number higher or lower then " + guess);
-		print ("Up = higher, down = lower, return = equal");
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.UpArrow)) {
-			GuessHigher();
-		} else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-			GuessLower();
-		} else if (Input.GetKeyDown(KeyCode.Return)) {
-			GuessCorrect();
-		}
+		NextGuess();
 	}
 	
 	public void GuessHigher(){
@@ -61,9 +36,9 @@ public class NumberWizards : MonoBehaviour {
 	}
 	
 	void NextGuess () {
-		guess = (max + min) / 2;
-		print ("Higher or lower then " + guess);
-		print ("Up = higher, down = lower, return = equal");
+		//guess = (max + min) / 2;
+		guess = Random.Range(min, max);
+		print ("Next guess is " + guess);
 		guessText.text = guess.ToString();
 	}
 }
