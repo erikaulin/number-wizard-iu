@@ -33,15 +33,27 @@ public class NumberWizards : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.UpArrow)) {
-			min = guess;
-			NextGuess();
+			GuessHigher();
 		} else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-			max = guess;
-			NextGuess();
+			GuessLower();
 		} else if (Input.GetKeyDown(KeyCode.Return)) {
-			print("I won!");
-			StartGame();
+			GuessCorrect();
 		}
+	}
+	
+	public void GuessHigher(){
+		min = guess;
+		NextGuess();
+	}
+	
+	public void GuessLower(){
+		max = guess;
+		NextGuess();
+	}
+	
+	public void GuessCorrect(){
+		print("I won!");
+		StartGame();
 	}
 	
 	void NextGuess () {
